@@ -1,3 +1,3 @@
 export const Home = () => {
-    return <h1> Bom dia </h1>
+    return <h1> la Voûte des Couleurs </h1>
 }
