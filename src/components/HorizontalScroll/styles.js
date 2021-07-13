@@ -8,6 +8,7 @@ export const Container = styled.section`
         justify-content: center;
         align-items: center;
         padding: 20px;
+        flex-direction: row;
         
         &::-webkit-scrollbar {
             display: none;

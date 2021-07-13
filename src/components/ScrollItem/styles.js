@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    margin: 0 1.2rem;
+    margin: 1.2rem;
     position: relative;
     min-width: 20rem;
     min-height: 20rem;
@@ -13,11 +13,6 @@ export const Container = styled.div`
     &:hover {
         transform: scale(110%);
     }
-
-    /*img {
-        width: 20rem;
-        z-index: 1;
-    }*/
 
     div {
         position: absolute;
