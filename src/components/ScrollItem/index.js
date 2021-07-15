@@ -8,7 +8,6 @@ const ScrollItem = () => {
             <div>
                 <h3>Pintura futurista</h3>
             </div>
-            {/*<img src={painting} alt="imagem" />*/}
         </Container>
     )
 }
