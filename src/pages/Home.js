@@ -1,4 +1,4 @@
-import { useUserContext } from "../contexts/useUserContext"
+import { useUserContext } from "../hooks/useUserContext"
 
 export const Home = () => {
 

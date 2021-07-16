@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
-import UserProvider from './contexts/useUserContext';
+import UserProvider from './hooks/useUserContext';
 import { Routes } from './routes';
 import GlobalStyle from './syles';
 

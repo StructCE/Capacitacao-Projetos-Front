@@ -9,7 +9,7 @@ import {
 } from './style'
 import { useState } from "react"
 import Button from "../../components/Button"
-import { useUserContext } from "../../contexts/useUserContext"
+import { useUserContext } from "../../hooks/useUserContext"
 
 const LoginPage = () => {
 
