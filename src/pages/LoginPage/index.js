@@ -9,11 +9,19 @@ import {
 } from './style'
 import { useState } from "react"
 import Button from "../../components/Button"
+import { useUserContext } from "../../contexts/useUserContext"
 
 const LoginPage = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const { login } = useUserContext();
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        login({ email, password })
+    }
 
     return (
         <Container>
@@ -23,7 +31,7 @@ const LoginPage = () => {
             </LeftSector>
             <CenterSector>
                 <h1>Bem vindo de volta!</h1>
-                <InputSection>
+                <InputSection onSubmit={handleSubmit}>
                     <Input
                         Icon={FiMail}
                         type="email"
@@ -36,7 +44,9 @@ const LoginPage = () => {
                         placeholder="Senha"
                         onChange={event => setPassword(event.target.value)}
                     />
-                    <Button>Entrar</Button>
+                    <Button type='submit'>
+                        Entrar
+                    </Button>
                 </InputSection>
             </CenterSector>
             <RightSector>

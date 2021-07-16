@@ -1,3 +1,8 @@
+import { useUserContext } from "../contexts/useUserContext"
+
 export const Home = () => {
-    return <h1> la Voûte des Couleurs </h1>
+
+    const { user } = useUserContext()
+
+    return <h1> { user ? user.name : 'la Voûte des Couleurs' } </h1>
 }
