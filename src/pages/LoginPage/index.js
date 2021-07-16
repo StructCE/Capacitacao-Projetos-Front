@@ -7,8 +7,14 @@ import {
         RightSector,
         InputSection
 } from './style'
+import { useState } from "react"
+import Button from "../../components/Button"
 
 const LoginPage = () => {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     return (
         <Container>
             <LeftSector>
@@ -22,12 +28,15 @@ const LoginPage = () => {
                         Icon={FiMail}
                         type="email"
                         placeholder="Email"
+                        onChange={event => setEmail(event.target.value)}
                     />
                     <Input 
                         Icon={FiLock}
                         type="password"
                         placeholder="Senha"
+                        onChange={event => setPassword(event.target.value)}
                     />
+                    <Button>Entrar</Button>
                 </InputSection>
             </CenterSector>
             <RightSector>

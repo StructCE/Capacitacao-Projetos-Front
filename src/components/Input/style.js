@@ -18,6 +18,17 @@ export const Container = styled.div`
         transition: all .5s;
     }
 
+    input {
+        margin-left: .3rem;
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        font-family: 'Merienda One';
+        font-size: .8rem;
+        color: var(--grey);
+    }
+
     ${
         props => (props.isFocused || props.isFilled) && 
         css`
@@ -26,17 +37,10 @@ export const Container = styled.div`
             svg {
                 color: var(--red);
             }
+
+            input {
+                color: var(--red);
+            }
         `
-    }
-    
-    input {
-        margin-left: .3rem;
-        width: 100%;
-        height: 100%;
-        border: none;
-        outline: none;
-        font-family: inherit;
-        font-size: .8rem;
-        color: var(--grey);
     }
 `

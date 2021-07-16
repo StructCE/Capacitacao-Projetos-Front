@@ -59,10 +59,13 @@ export const CenterSector = styled.div`
     }
 `;
 
-export const InputSection = styled.div`
+export const InputSection = styled.form`
     width: 70%;
     justify-self: center;
     align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `
 
 export const RightSector = styled.div`
