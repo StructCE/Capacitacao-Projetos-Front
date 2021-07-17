@@ -33,12 +33,30 @@ const UserProvider = ({ children }) => {
             setUser(response.data)
             history.push('/')
         } catch(e) {
-            alert(e)
+            alert(e.message)
+        }
+    }
+
+    const register = async ({ email, password, name }) => {
+        try {
+            const response = await api.post('user/create', {
+                user: {
+                    name,
+                    email,
+                    password
+                }
+            })
+            Cookies.setItem('laVoute/User', JSON.stringify(response.data))
+
+            setUser(response.data)
+            history.push('/')
+        } catch(e) {
+            alert(e.message)
         }
     }
 
     return (
-        <UserContext.Provider value={{ user, login }}>
+        <UserContext.Provider value={{ user, login, checkCookies, register }}>
             {children}
         </UserContext.Provider>
     )
