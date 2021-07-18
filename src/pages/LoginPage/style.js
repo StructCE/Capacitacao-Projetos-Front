@@ -55,6 +55,7 @@ export const CenterSector = styled.div`
     @media screen and (max-width: 768px) {
         h1 {
             font-size: 2rem;
+            margin-bottom: 2%;
         }
     }
 `;

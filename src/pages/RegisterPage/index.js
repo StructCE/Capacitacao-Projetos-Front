@@ -36,7 +36,7 @@ const LoginPage = () => {
                 <div className="gradient" />
             </LeftSector>
             <CenterSector>
-                <h1>Bem vindo de volta!</h1>
+                <h1>Estamos felizes com a sua chegada!</h1>
                 <InputSection onSubmit={handleSubmit}>
                     <Input
                         Icon={FiUser}

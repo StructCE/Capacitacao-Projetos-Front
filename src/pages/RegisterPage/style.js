@@ -53,8 +53,11 @@ export const CenterSector = styled.div`
     }
 
     @media screen and (max-width: 768px) {
+        flex: 2;
+        
         h1 {
             font-size: 2rem;
+            margin-bottom: 2%;
         }
     }
 `;
