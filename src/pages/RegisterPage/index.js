@@ -18,15 +18,37 @@ const LoginPage = () => {
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [username, setUsername] = useState('')
     const { register } = useUserContext();
+    const [nameFailure, setNameFailure] = useState(false)
+    const [emailFailure, setEmailFailure] = useState(false)
+    const [passwordFailure, setPasswordFailure] = useState(false)
+    const [passwordConfirmationFailure, setPasswordConfirmationFailure] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        register({
-            email,
-            password,
-            name: username
-        })
+        if (email === '') {
+            setEmailFailure(true)
+        }
+
+        if (username.lenght < 3) {
+            setNameFailure(true)
+        }
+
+        if (password.length < 6) {
+            setPasswordFailure(true)
+        }
+
+        if (password !== passwordConfirmation) {
+            setPasswordConfirmationFailure(true)
+        }
+
+        if (!(nameFailure || emailFailure || passwordFailure || passwordConfirmationFailure)) {
+            register({
+                email,
+                password,
+                name: username
+            })
+        }
     }
 
     return (
@@ -43,13 +65,17 @@ const LoginPage = () => {
                         type="text"
                         placeholder="Nome de Usuário"
                         value={username}
-                        onChange={event => setUsername(event.target.value)}
+                        failed={nameFailure}
+                        failureMessage={'O nome de usuário deve ter ao menos 3 caracteres'}
+                        onChange={event => {setUsername(event.target.value); setNameFailure(false)}}
                     />
                     <Input
                         Icon={FiMail}
                         type="email"
                         placeholder="Email"
                         value={email}
+                        failed={emailFailure}
+                        failureMessage={'Favor inserir um email válido'}
                         onChange={event => setEmail(event.target.value)}
                     />
                     <Input 
@@ -57,6 +83,8 @@ const LoginPage = () => {
                         type="password"
                         placeholder="Senha"
                         value={password}
+                        failed={passwordFailure}
+                        failureMessage={'Favor inserir uma senha com 6 ou mais caracteres'}
                         onChange={event => setPassword(event.target.value)}
                     />
                     <Input 
@@ -64,6 +92,8 @@ const LoginPage = () => {
                         type="password"
                         placeholder="Confirmar Senha"
                         value={passwordConfirmation}
+                        failed={passwordConfirmationFailure}
+                        failureMessage={'As senhas tem de ser iguais'}
                         onChange={event => setPasswordConfirmation(event.target.value)}
                     />
                     <Button type='submit'>
