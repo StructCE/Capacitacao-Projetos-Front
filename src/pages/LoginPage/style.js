@@ -69,6 +69,13 @@ export const InputSection = styled.form`
     justify-content: center;
 `
 
+export const ErrorSection = styled.span`
+    color: #c00;
+    font-family: 'Merienda One';
+    text-align: center;
+`;
+
+
 export const RightSector = styled.div`
     display: flex;
     flex: 1;
