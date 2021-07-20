@@ -53,6 +53,8 @@ export const CenterSector = styled.div`
     }
 
     @media screen and (max-width: 768px) {
+        flex: 2;
+        
         h1 {
             font-size: 2rem;
             margin-bottom: 2%;
@@ -67,14 +69,13 @@ export const InputSection = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
-`
+`;
 
 export const ErrorSection = styled.span`
     color: #c00;
     font-family: 'Merienda One';
     text-align: center;
 `;
-
 
 export const RightSector = styled.div`
     display: flex;

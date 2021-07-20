@@ -9,10 +9,12 @@ const UserProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
     const history = useHistory();
+    const [error, setError] = useState(false)
 
     const checkCookies = async () => {
         const cookie = await Cookies.getItem('laVoute/User')
         setUser(JSON.parse(cookie))
+        return JSON.parse(cookie)
     }
 
     useEffect(() => {
@@ -31,14 +33,34 @@ const UserProvider = ({ children }) => {
             Cookies.setItem('laVoute/User', JSON.stringify(response.data))
 
             setUser(response.data)
+            setError(false)
             history.push('/')
         } catch(e) {
-            alert(e)
+            setError(true)
+        }
+    }
+
+    const register = async ({ email, password, name }) => {
+        try {
+            const response = await api.post('user/create', {
+                user: {
+                    name,
+                    email,
+                    password
+                }
+            })
+            Cookies.setItem('laVoute/User', JSON.stringify(response.data))
+
+            setUser(response.data)
+            setError(false)
+            history.push('/')
+        } catch(e) {
+            setError(true)
         }
     }
 
     return (
-        <UserContext.Provider value={{ user, login }}>
+        <UserContext.Provider value={{ user, login, checkCookies, register, error }}>
             {children}
         </UserContext.Provider>
     )
