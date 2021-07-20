@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
         background: var(--bege);
         -webkit-font-smoothing: antialiased;
         font-family: 'Marck Script', cursive, sans-serif;
-        color: var(--red)
+        color: var(--red);
     }
 
     * {
