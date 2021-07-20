@@ -13,13 +13,17 @@ const UserProvider = ({ children }) => {
 
     const checkCookies = async () => {
         const cookie = await Cookies.getItem('laVoute/User')
-        setUser(JSON.parse(cookie))
-        return JSON.parse(cookie)
+
+        let tmp = JSON.parse(cookie)
+
+        setUser(tmp)
+
+        api.defaults.headers.common['X-User-Auth'] = tmp.authentication_token
+        api.defaults.headers.common['X-User-Email'] = tmp.email
     }
 
     useEffect(() => {
         checkCookies()
-        console.log(user)
     }, [])
 
     const login = async ({ email, password }) => {
@@ -60,7 +64,7 @@ const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ user, login, checkCookies, register, error }}>
+        <UserContext.Provider value={{ user, login, register, error }}>
             {children}
         </UserContext.Provider>
     )
