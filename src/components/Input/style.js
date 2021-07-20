@@ -62,6 +62,8 @@ export const InputContainer = styled.div`
 `
 
 export const Container = styled.div`
+    transition: all .2s;
+
     span {
         padding-left: 10px;
         color: #c00;

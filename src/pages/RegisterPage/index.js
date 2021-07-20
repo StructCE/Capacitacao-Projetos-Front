@@ -5,7 +5,8 @@ import {
         LeftSector,
         CenterSector,
         RightSector,
-        InputSection
+        InputSection,
+        ErrorSection
 } from './style'
 import { useState } from "react"
 import Button from "../../components/Button"
@@ -17,7 +18,7 @@ const LoginPage = () => {
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [username, setUsername] = useState('')
-    const { register } = useUserContext();
+    const { register, error } = useUserContext();
     const [nameFailure, setNameFailure] = useState(false)
     const [emailFailure, setEmailFailure] = useState(false)
     const [passwordFailure, setPasswordFailure] = useState(false)
@@ -30,7 +31,7 @@ const LoginPage = () => {
             setEmailFailure(true)
         }
 
-        if (username.lenght < 3) {
+        if (username.lenght < 3 || username === '') {
             setNameFailure(true)
         }
 
@@ -38,7 +39,7 @@ const LoginPage = () => {
             setPasswordFailure(true)
         }
 
-        if (password !== passwordConfirmation) {
+        if (password !== passwordConfirmation || passwordFailure) {
             setPasswordConfirmationFailure(true)
         }
 
@@ -60,6 +61,12 @@ const LoginPage = () => {
             <CenterSector>
                 <h1>Estamos felizes com a sua chegada!</h1>
                 <InputSection onSubmit={handleSubmit}>
+                    {
+                        error &&
+                            <ErrorSection>
+                                Esse email já está sendo usado!
+                            </ErrorSection>
+                    }
                     <Input
                         Icon={FiUser}
                         type="text"
@@ -67,7 +74,10 @@ const LoginPage = () => {
                         value={username}
                         failed={nameFailure}
                         failureMessage={'O nome de usuário deve ter ao menos 3 caracteres'}
-                        onChange={event => {setUsername(event.target.value); setNameFailure(false)}}
+                        onChange={event => {
+                            setUsername(event.target.value);
+                            setNameFailure(false)
+                        }}
                     />
                     <Input
                         Icon={FiMail}
@@ -76,7 +86,10 @@ const LoginPage = () => {
                         value={email}
                         failed={emailFailure}
                         failureMessage={'Favor inserir um email válido'}
-                        onChange={event => setEmail(event.target.value)}
+                        onChange={event => {
+                            setEmail(event.target.value);
+                            setEmailFailure(false)
+                        }}
                     />
                     <Input 
                         Icon={FiLock}
@@ -85,7 +98,10 @@ const LoginPage = () => {
                         value={password}
                         failed={passwordFailure}
                         failureMessage={'Favor inserir uma senha com 6 ou mais caracteres'}
-                        onChange={event => setPassword(event.target.value)}
+                        onChange={event => {
+                            setPassword(event.target.value)
+                            setPasswordFailure(false)
+                        }}
                     />
                     <Input 
                         Icon={FiLock}
@@ -94,7 +110,10 @@ const LoginPage = () => {
                         value={passwordConfirmation}
                         failed={passwordConfirmationFailure}
                         failureMessage={'As senhas tem de ser iguais'}
-                        onChange={event => setPasswordConfirmation(event.target.value)}
+                        onChange={event => {
+                            setPasswordConfirmation(event.target.value)
+                            setPasswordConfirmationFailure(false)
+                        }}
                     />
                     <Button type='submit'>
                         Cadastrar
