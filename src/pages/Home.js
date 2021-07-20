@@ -1,11 +1,8 @@
-import HorizontalScroll from "../components/HorizontalScroll"
-import VerticalScroll from "../components/VerticalScroll"
+import { useUserContext } from "../hooks/useUserContext"
 
 export const Home = () => {
-    return (
-        <>
-            <VerticalScroll />
-            <HorizontalScroll />
-        </>
-    )
+
+    const { user } = useUserContext()
+
+    return <h1> { user ? user.name : 'la Voûte des Couleurs' } </h1>
 }
