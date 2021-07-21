@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { api } from '../services/api';
 import Cookies from 'js-cookies';
 
+
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {    
@@ -18,8 +19,24 @@ const UserProvider = ({ children }) => {
 
         setUser(tmp)
 
-        api.defaults.headers.common['X-User-Auth'] = tmp.authentication_token
+        api.defaults.headers.common['X-User-Token'] = tmp.authentication_token
         api.defaults.headers.common['X-User-Email'] = tmp.email
+
+        refreshUser(tmp)
+    }
+
+    const refreshUser = async ({ authentication_token, email}) => {
+        try {
+            const response = await api.get('/user/show', {
+                headers: {
+                    'X-User-Token': authentication_token,
+                    'X-User-Email': email
+                }
+            })
+            setUser(response.data)
+        } catch(e) {
+            console.error(e)
+        }
     }
 
     useEffect(() => {
@@ -64,7 +81,7 @@ const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ user, login, register, error }}>
+        <UserContext.Provider value={{ user, login, register, error, setUser }}>
             {children}
         </UserContext.Provider>
     )
