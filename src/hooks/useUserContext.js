@@ -25,15 +25,12 @@ const UserProvider = ({ children }) => {
         refreshUser(tmp)
     }
 
-    const refreshUser = async ({ authentication_token, email}) => {
+    const refreshUser = async () => {
         try {
-            const response = await api.get('/user/show', {
-                headers: {
-                    'X-User-Token': authentication_token,
-                    'X-User-Email': email
-                }
-            })
+            const response = await api.get('/user/show')
+            Cookies.setItem('laVoute/User', JSON.stringify(response.data))
             setUser(response.data)
+            console.log(response.data)
         } catch(e) {
             console.error(e)
         }
@@ -81,7 +78,7 @@ const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ user, login, register, error, setUser }}>
+        <UserContext.Provider value={{ user, login, register, error, refreshUser, setUser }}>
             {children}
         </UserContext.Provider>
     )

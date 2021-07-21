@@ -25,7 +25,39 @@ export const InformationContainer = styled.section`
 `;
 
 export const ImageInput = styled.form`
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    position: absolute;
+    background: #415a7799;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: all .5s;
+    opacity: 0;
 
+    input[type="file"] {
+        display: none;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+
+    button {
+        background: #fff0;
+        font-family: inherit;
+        color: var(--red);
+        border: 2px var(--red) solid;
+        border-radius: 5px;
+        padding: 4px;
+        transition: all .2s;
+
+        &:hover {
+            background: var(--bege);
+        }
+    }
 `;
 
 export const Container = styled.section`

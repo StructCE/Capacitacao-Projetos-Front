@@ -1,5 +1,5 @@
 import Input from "../../components/Input"
-import { FiLock, FiMail, FiUser, FiImage } from 'react-icons/fi'
+import { FiLock, FiMail, FiUser } from 'react-icons/fi'
 import {
         Container,
         LeftSector,
