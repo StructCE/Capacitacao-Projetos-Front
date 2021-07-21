@@ -16,10 +16,19 @@ export const InformationContainer = styled.section`
     .info {
         padding: .5rem;
         min-width: 40vw;
+        display: flex;
+        flex-direction: column;
 
         h3 {
             font-size: 2.5rem;
             font-family: Atma;
+        }
+
+        a {
+            justify-self: flex-end;
+            align-self: flex-end;
+            color: var(--red);
+            
         }
     }
 `;

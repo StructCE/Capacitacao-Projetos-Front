@@ -3,6 +3,7 @@ import { Home } from './pages/Home';
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import ProfilePage from './pages/ProfilePage';
+import EditUserPage from './pages/EditUserPAge'
 
 export const Routes = () => {
     return (
@@ -10,7 +11,8 @@ export const Routes = () => {
             <Route exact path='/' component={Home} />
             <Route path='/login' component={LoginPage} />
             <Route path='/register' component={RegisterPage} />
-            <Route path='/user' component={ProfilePage} />
+            <Route exact path='/user' component={ProfilePage} />
+            <Route path='/user/edit' component={EditUserPage} />
         </Switch>
     )
 }

@@ -9,6 +9,8 @@ import placeholder from '../../assets/BaseUserPicture.jpg';
 import { BiCamera } from 'react-icons/bi'
 import { useState } from "react";
 import { api } from "../../services/api";
+import { RiPencilLine } from "react-icons/ri"
+import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
 
@@ -54,6 +56,9 @@ const ProfilePage = () => {
                             <img src={!user.user_photo ? placeholder : `http://127.0.0.1:3000${user.user_photo}`} alt="Foto de perfil" />
                         </div>
                         <div className="info">
+                            <Link to="/user/edit">
+                                <RiPencilLine />
+                            </Link>
                             <h3>{user.name}</h3>
                             <span>{user.email}</span>
                         </div>
