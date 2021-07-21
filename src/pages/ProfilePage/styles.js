@@ -45,6 +45,10 @@ export const ImageInput = styled.form`
         opacity: 1;
     }
 
+    .custom-file-input:hover {
+        cursor: pointer;
+    }
+
     button {
         background: #fff0;
         font-family: inherit;
@@ -56,6 +60,7 @@ export const ImageInput = styled.form`
 
         &:hover {
             background: var(--bege);
+            cursor: pointer;
         }
     }
 `;
