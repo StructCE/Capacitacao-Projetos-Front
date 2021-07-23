@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 import UserProvider from './hooks/useUserContext';
-import { Routes } from './routes';
+import Routes from './routes';
 import GlobalStyle from './syles';
 
 function App() {
