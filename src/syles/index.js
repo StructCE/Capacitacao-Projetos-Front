@@ -1,7 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-import React from 'react'
-
 const GlobalStyle = createGlobalStyle`
     :root {
         --bege: #f4d6cc;
