@@ -31,7 +31,7 @@ const PainterPage = () => {
                 <img src={placeholder} alt="Foto do Artista" />
                 <div>
                     <h1>{painter.name}</h1>
-                    <span>{painter.born}-{painter.died}</span>
+                    <span>{painter.born}/{painter.died}</span>
                 </div>
                 <p>
                     {painter.bio}
@@ -41,7 +41,13 @@ const PainterPage = () => {
                 {
                     painter.paintings &&
                         painter.paintings.map(painting => {
-                            return(<ScrollItem key={painting.id} />)
+                            return(
+                                <>
+                                    <ScrollItem key={painting.id} painting={painting} />
+                                    <ScrollItem key={painting.id + "a"} painting={painting} />
+                                    <ScrollItem key={painting.id + "b"} painting={painting} />
+                                </>
+                            )
                         })
                 }
             </VerticalScroll>

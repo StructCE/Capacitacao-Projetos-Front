@@ -5,6 +5,10 @@ export const Container = styled.section`
     color: var(--blue);
     flex: 1;
     padding: 2rem;
+
+    @media screen and (max-width: 1024px) {
+        flex-direction: column;
+    }
 `;
 
 export const InfoContainer = styled.div`
@@ -13,16 +17,29 @@ export const InfoContainer = styled.div`
     img {
         margin-left: 2.5rem;
         max-height: 30rem;
-        max-width: 25rem;
+        max-width: 20rem;
         height: 100%;
         width: 100%;
         object-fit: cover;
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (max-width: 1024px) {
+            margin: auto;
+            max-width: 80vw;
+            max-height: 40vh;
+        }
     }
 
     div {
-        position: absolute;
-        top: 29rem;
-        left: 22rem;
+        position: relative;
+        left: 18rem;
+        top: -3rem;
+
+        @media screen and (max-width: 1024px) {
+            left: 0;
+            top: 0;
+        }
     }
 
     h1 {
@@ -33,13 +50,21 @@ export const InfoContainer = styled.div`
 
     span {
         font-family: Parisienne;
-        font-size: 2rem;
+        font-size: 1.25rem;
+        top: -1rem;
+        position: relative;
     }
 
     p {
-        margin-top: 7rem;
-        margin-left: 5rem;
-        max-width: 50rem;
         font-size: 1.2rem;
+        margin: auto;
+        text-align: center;
+        width: clamp(50ch, 100%, 75ch);
+        white-space: pre-wrap;
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            font-size: 1rem;
+        }
     }
 `;

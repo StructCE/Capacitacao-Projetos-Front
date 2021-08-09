@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container } from './styles';
-import painting from '../../assets/FuturistPainting.png';
+import placeholder from '../../assets/placeholder.png';
 
-const ScrollItem = () => {
+const ScrollItem = ({ painting }) => {
     return (
-        <Container image={painting}>
+        <Container image={painting.painting_url ? `http://localhost:3000${painting.painting_url}` : placeholder}>
             <div>
-                <h3>Pintura futurista</h3>
+                <h3>{painting.name}</h3>
             </div>
         </Container>
     )

@@ -33,6 +33,7 @@ export const Container = styled.div`
 
             h3 {
                 display: block;
+                color: var(--red);
             }
         }
     }
