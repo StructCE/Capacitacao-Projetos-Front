@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div`
+export const InputContainer = styled.div`
     background: #fff;
     width: 90%;
     border-radius: 8px;
@@ -42,5 +42,30 @@ export const Container = styled.div`
                 color: var(--red);
             }
         `
+    }
+
+    ${
+        props => (props.failed) && 
+        css`
+            border-color: #c00;
+
+            svg {
+                color: #c00;
+            }
+
+            input {
+                color: #c00;
+            }
+        `
+    }
+
+`
+
+export const Container = styled.div`
+    transition: all .2s;
+
+    span {
+        padding-left: 10px;
+        color: #c00;
     }
 `

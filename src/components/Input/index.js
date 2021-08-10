@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Container } from './style'
+import { InputContainer, Container } from './style'
 
-const Input = ({ Icon, ...props }) => {
+const Input = ({ Icon, failed, failureMessage, ...props }) => {
 
     const [isFocused, setIsFocoused] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
@@ -16,13 +16,16 @@ const Input = ({ Icon, ...props }) => {
     }
 
     return (
-        <Container isFilled={isFilled} isFocused={isFocused}>
-            <Icon size={18} />
-            <input
-                onFocus={handleOnFocus}
-                onBlur={handleOnBlur}
-                {...props}
-            />
+        <Container>
+            <InputContainer isFilled={isFilled} isFocused={isFocused} failed={failed}>
+                <Icon size={18} />
+                <input
+                    onFocus={handleOnFocus}
+                    onBlur={handleOnBlur}
+                    {...props}
+                />
+            </InputContainer>
+            { failed && <span>{failureMessage}</span> }
         </Container>
     )
 }
