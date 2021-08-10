@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { api } from '../services/api';
 import Cookies from 'js-cookies';
 
+
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {    
@@ -18,8 +19,21 @@ const UserProvider = ({ children }) => {
 
         setUser(tmp)
 
-        api.defaults.headers.common['X-User-Auth'] = tmp.authentication_token
+        api.defaults.headers.common['X-User-Token'] = tmp.authentication_token
         api.defaults.headers.common['X-User-Email'] = tmp.email
+
+        refreshUser(tmp)
+    }
+
+    const refreshUser = async () => {
+        try {
+            const response = await api.get('/user/show')
+            Cookies.setItem('laVoute/User', JSON.stringify(response.data))
+            setUser(response.data)
+            console.log(response.data)
+        } catch(e) {
+            console.error(e)
+        }
     }
 
     useEffect(() => {
@@ -57,14 +71,33 @@ const UserProvider = ({ children }) => {
 
             setUser(response.data)
             setError(false)
-            history.push('/')
+            history.push('/user')
+        } catch(e) {
+            setError(true)
+        }
+    }
+
+    const update = async ({ email, password, name }) => {
+        try {
+            const response = await api.put('user/update', {
+                user: {
+                    name,
+                    email,
+                    password
+                }
+            })
+            Cookies.setItem('laVoute/User', JSON.stringify(response.data))
+
+            setUser(response.data)
+            setError(false)
+            history.push('/user')
         } catch(e) {
             setError(true)
         }
     }
 
     return (
-        <UserContext.Provider value={{ user, login, register, error }}>
+        <UserContext.Provider value={{ user, login, register, error, refreshUser, setUser, update }}>
             {children}
         </UserContext.Provider>
     )

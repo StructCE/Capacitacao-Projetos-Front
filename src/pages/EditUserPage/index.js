@@ -7,18 +7,18 @@ import {
         RightSector,
         InputSection,
         ErrorSection
-} from './style'
+} from './styles'
 import { useState } from "react"
 import Button from "../../components/Button"
 import { useUserContext } from "../../hooks/useUserContext"
 
 const LoginPage = () => {
 
-    const [email, setEmail] = useState('')
+    const { update, error, user } = useUserContext();
+    const [email, setEmail] = useState(user.email)
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
-    const [username, setUsername] = useState('')
-    const { register, error } = useUserContext();
+    const [username, setUsername] = useState(user.name)
     const [nameFailure, setNameFailure] = useState(false)
     const [emailFailure, setEmailFailure] = useState(false)
     const [passwordFailure, setPasswordFailure] = useState(false)
@@ -44,7 +44,7 @@ const LoginPage = () => {
         }
 
         if (!(nameFailure || emailFailure || passwordFailure || passwordConfirmationFailure)) {
-            register({
+            update({
                 email,
                 password,
                 name: username
