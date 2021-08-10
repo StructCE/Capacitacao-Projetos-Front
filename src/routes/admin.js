@@ -1,5 +1,6 @@
 import { Route, Switch, useRouteMatch } from "react-router-dom"
 import { useUserContext } from "../hooks/useUserContext"
+import CreatePainter from "../pages/CreatePainter"
 import { Home } from "../pages/Home"
 
 const AdminRoutes = () => {
@@ -10,9 +11,19 @@ const AdminRoutes = () => {
     return (
         <Switch>
             {
-                user.is_admin ?
+                user ?
                 <>
-                    <Route exact path={path} />
+                    {
+                        user.is_admin ?
+                            <>
+                                <Route exact path={path} />
+                                <Route exact path={`${path}/painter/create`} component={CreatePainter} />
+                            </>
+                            :
+                            <>
+                                <Route path={path} component={Home} />
+                            </>
+                    }
                 </>
                 :
                 <>
