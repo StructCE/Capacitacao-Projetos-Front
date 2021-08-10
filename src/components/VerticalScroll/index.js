@@ -1,15 +1,19 @@
 import React from 'react'
 import { Container } from './styles'
-import ScrollContainer from 'react-indiana-drag-scroll'
+import { Swiper } from 'swiper/react';
 
-const HorizontalScroll = ({ children, style }) => {
+const VerticalScroll = ({ children, style }) => {
     return (
         <Container style>
-            <ScrollContainer className="container" hideScrollbars>
+            <Swiper
+                className="container"
+                slidesPerView={3}
+                direction={'vertical'}          
+            >
                 {children}
-            </ScrollContainer>
+            </Swiper>
         </Container>
     )
 }
 
-export default HorizontalScroll
+export default VerticalScroll
