@@ -16,13 +16,14 @@ const UserProvider = ({ children }) => {
         const cookie = await Cookies.getItem('laVoute/User')
 
         let tmp = JSON.parse(cookie)
+        if(tmp){
+            setUser(tmp)
 
-        setUser(tmp)
+            api.defaults.headers.common['X-User-Token'] = tmp.authentication_token
+            api.defaults.headers.common['X-User-Email'] = tmp.email
 
-        api.defaults.headers.common['X-User-Token'] = tmp.authentication_token
-        api.defaults.headers.common['X-User-Email'] = tmp.email
-
-        refreshUser(tmp)
+            refreshUser(tmp)
+        }
     }
 
     const refreshUser = async () => {
