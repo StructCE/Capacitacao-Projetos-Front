@@ -42,11 +42,7 @@ const PainterPage = () => {
                     painter.paintings &&
                         painter.paintings.map(painting => {
                             return(
-                                <>
-                                    <ScrollItem key={painting.id} painting={painting} />
-                                    <ScrollItem key={painting.id + "a"} painting={painting} />
-                                    <ScrollItem key={painting.id + "b"} painting={painting} />
-                                </>
+                                <ScrollItem key={painting.id} painting={painting} />
                             )
                         })
                 }

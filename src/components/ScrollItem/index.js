@@ -6,12 +6,16 @@ import { SwiperSlide } from 'swiper/react';
 
 const ScrollItem = ({ painting }) => {
     return (
-        <SwiperSlide>
-            <Container image={painting.painting_url ? `http://localhost:3000${painting.painting_url}` : placeholder}>
-                <div>
-                    <h3>{painting.name}</h3>
-                </div>
-            </Container>
+        <SwiperSlide style={{minWidth: '20rem', minHeight: '20rem'}}>
+            <h3>{painting.name}</h3>
+            {/*<img 
+                src={
+                        painting.painting_url ?
+                        `http://localhost:3000${painting.painting_url}` 
+                        : placeholder
+                    }
+                alt={painting.name} 
+            />*/}
         </SwiperSlide>
     )
 }

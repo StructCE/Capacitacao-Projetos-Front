@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    margin: 1.2rem;
+    /*margin: 1.2rem;
     position: relative;
     min-width: 20rem;
     min-height: 20rem;
@@ -36,5 +36,5 @@ export const Container = styled.div`
                 color: var(--red);
             }
         }
-    }
+    }*/
 `

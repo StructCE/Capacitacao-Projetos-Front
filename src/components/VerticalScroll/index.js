@@ -1,18 +1,17 @@
 import React from 'react'
 import { Container } from './styles'
-import { Swiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import "swiper/swiper.min.css"
 
-const VerticalScroll = ({ children, style }) => {
+const VerticalScroll = ({ children }) => {
     return (
-        <Container style>
-            <Swiper
-                className="container"
-                slidesPerView={3}
-                direction={'vertical'}          
-            >
-                {children}
-            </Swiper>
-        </Container>
+        <Swiper
+            slidesPerView={3}
+            direction={'vertical'}          
+        >
+            <SwiperSlide><h3>Slide 1</h3></SwiperSlide>
+            {children}
+        </Swiper>
     )
 }
 
