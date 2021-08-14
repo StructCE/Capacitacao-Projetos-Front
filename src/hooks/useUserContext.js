@@ -16,6 +16,8 @@ const UserProvider = ({ children }) => {
         const cookie = await Cookies.getItem('laVoute/User')
 
         let tmp = JSON.parse(cookie)
+        if(tmp){
+            setUser(tmp)
 
         if (tmp) {
             setUser(tmp)
