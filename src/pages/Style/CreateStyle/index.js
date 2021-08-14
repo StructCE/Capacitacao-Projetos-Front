@@ -22,21 +22,11 @@ const CreateStyle = () => {
     const [styleName, setStylename] = useState('')
     const [nameFailure, setNameFailure] = useState(false)
     const [descriptionFailure, setDescriptionFailure] = useState(false)
-    const [photo, setPhoto] = useState()
+    const [photo, setPhoto] = useState(null)
+    const [tempPhoto, setTempPhoto] = useState(null)
 
-    const formData = new FormData();
     
 
-    const handlePhotoUpload = (e) => {
-        e.preventDefault()
-
-        const formData = new FormData();
-
-		formData.append('photo', photo)
-
-        console.log(photo)
-
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -52,14 +42,18 @@ const CreateStyle = () => {
 
         if (!(nameFailure || descriptionFailure)) {
             try {		        
-                const response = await api.post('style/create', {
-                    style:{
-                        name: styleName,
-                        description: description
-                    },
-                    photo: formData.get('photo') 
+                const response = await api.post('style/create',{
+                style: {
+                    name: styleName,
+                    description: description
+                    }
                 })
-                console.log(response)
+                const formData = new FormData();
+                formData.append('photo', tempPhoto)
+                if (response.status === 201){
+                    const res = await api.put('style/add_photo/'+response.data.id, formData)
+                    console.log(res)
+                }
             } catch(e){
                 alert("Erro, tente novamente")
             }
@@ -106,17 +100,13 @@ const CreateStyle = () => {
                                     <input
                                         type="file"
                                         onChange={event => {
-                                            formData.set('photo', event.target.files[0])
-                                            console.log(formData.get('photo'))
-                                            
+                                            setPhoto(URL.createObjectURL(event.target.files[0]))
+                                            setTempPhoto(event.target.files[0])
                                         }}
                                     />
                                 </label>
-                                {/*<button type="submit">
-                                    Mudar de foto
-                                 </button>*/}
                             </ImageInput>
-                            <img src={formData.get('photo')?formData.get('photo'):placeholder} alt="Foto do estilo" />
+                            <img src={photo?photo:placeholder} alt="Foto do estilo" />
                     <Button type='submit'>
                         Cadastrar
                     </Button>
