@@ -24,8 +24,6 @@ const ProfilePage = () => {
 
 		formData.append('photo', photo)
 
-        console.log(photo)
-
         try {
             await api.post('/user/photo_upload', formData)
             refreshUser()

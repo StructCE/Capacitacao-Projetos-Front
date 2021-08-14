@@ -19,6 +19,9 @@ const UserProvider = ({ children }) => {
         if(tmp){
             setUser(tmp)
 
+        if (tmp) {
+            setUser(tmp)
+
             api.defaults.headers.common['X-User-Token'] = tmp.authentication_token
             api.defaults.headers.common['X-User-Email'] = tmp.email
 

@@ -1,14 +1,13 @@
 import React from 'react';
-import { Container } from './styles';
-import painting from '../../assets/FuturistPainting.png';
+import placeholder from '../../assets/placeholder.png';
+import { SwiperSlide } from 'swiper/react';
 
-const ScrollItem = () => {
+
+const ScrollItem = ({ painting }) => {
     return (
-        <Container image={painting}>
-            <div>
-                <h3>Pintura futurista</h3>
-            </div>
-        </Container>
+        <SwiperSlide style={{minWidth: '20rem', minHeight: '20rem'}}>
+            
+        </SwiperSlide>
     )
 }
 
