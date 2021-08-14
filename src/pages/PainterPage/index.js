@@ -37,15 +37,8 @@ const PainterPage = () => {
                     {painter.bio}
                 </p>
             </InfoContainer>
-            <VerticalScroll>
-                {
-                    painter.paintings &&
-                        painter.paintings.map(painting => {
-                            return(
-                                <ScrollItem key={painting.id} painting={painting} />
-                            )
-                        })
-                }
+            <VerticalScroll paintings={painter.paintings}>
+                
             </VerticalScroll>
         </Container>
     )

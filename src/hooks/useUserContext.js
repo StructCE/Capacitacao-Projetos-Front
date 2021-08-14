@@ -17,12 +17,14 @@ const UserProvider = ({ children }) => {
 
         let tmp = JSON.parse(cookie)
 
-        setUser(tmp)
+        if (tmp) {
+            setUser(tmp)
 
-        api.defaults.headers.common['X-User-Token'] = tmp.authentication_token
-        api.defaults.headers.common['X-User-Email'] = tmp.email
+            api.defaults.headers.common['X-User-Token'] = tmp.authentication_token
+            api.defaults.headers.common['X-User-Email'] = tmp.email
 
-        refreshUser(tmp)
+            refreshUser(tmp)
+        }
     }
 
     const refreshUser = async () => {
