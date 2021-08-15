@@ -1,5 +1,13 @@
-import React, {useState} from 'react'
-import { Hamburguer, MiddleLink, Menu, Nav, MenuLink, Line } from "./styles";
+import React, { useState } from "react";
+import {
+  Hamburguer,
+  MiddleLink,
+  Menu,
+  Nav,
+  MenuLink,
+  Line,
+  Logo,
+} from "./styles";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,19 +15,20 @@ const Navbar = () => {
   return (
     <div>
       <Nav>
-        <Hamburguer onClick = {() => setIsOpen(!setIsOpen)}>
+        <Logo>la Voûte des Couleurs</Logo>
+        <Hamburguer onClick={() => setIsOpen(!isOpen)}>
           <span />
           <span />
           <span />
         </Hamburguer>
         <Menu isOpen={isOpen}>
-          <MenuLink href="#">Início</MenuLink >
-          <MenuLink href="#">Pintores</MenuLink >
+          <MenuLink href="#">Início</MenuLink>
+          <MenuLink href="#">Pintores</MenuLink>
           <MiddleLink href="#">Struct</MiddleLink>
           <MenuLink href="#">Obras</MenuLink>
           <MenuLink href="#">Sobre nós</MenuLink>
         </Menu>
-        <Line/>
+        <Line />
       </Nav>
     </div>
   );

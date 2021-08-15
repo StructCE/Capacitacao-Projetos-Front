@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Nav = styled.div`
   padding: 0rem 2rem;
   /* box-shadow: 0px 24px 3px -24px #581f18; */
+
+  @media (max-width: 768px) {
+    padding: 0rem 0rem;
+  }
 `;
 
 export const Line = styled.hr`
@@ -12,6 +16,10 @@ export const Line = styled.hr`
   height: 2px;
   color: #581f18;
   background-color: #581f18;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const Hamburguer = styled.div`
@@ -30,6 +38,9 @@ export const Hamburguer = styled.div`
 
   @media (max-width: 768px) {
     display: flex;
+    position: absolute;
+    right: 10px;
+    top: 10px;
   }
 `;
 
@@ -43,7 +54,8 @@ export const Menu = styled.div`
     overflow: hidden;
     flex-direction: column;
     width: 100%;
-    max-height: ${({isOpen})  => (isOpen ? "100px" : "0px")};
+    max-height: ${({isOpen})  => (isOpen ? "300px" : "0px")};
+    transition: max-height 0.3s ease-in;
   }
 `;
 
@@ -52,6 +64,10 @@ export const MenuLink = styled.a`
   font-size: 1.3rem;
   padding: 1rem 5.2rem;
   color: #581f18;
+
+  &:hover{
+    color: #415a77;
+  }
 `;
 
 export const MiddleLink = styled.a`
@@ -60,4 +76,19 @@ export const MiddleLink = styled.a`
   font-size: 1.4rem;
   text-decoration: none;
   font-weight: 600;
+
+  &:hover{
+    color: #415a77;
+  }
+`;
+
+export const Logo = styled.h1`
+  display: none;
+  @media (max-width: 768px) {
+    display: flex;
+    color: #581f18;
+    text-decoration: none;
+    font-size: 2rem;
+    
+  }
 `;
