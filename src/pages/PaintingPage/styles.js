@@ -19,17 +19,18 @@ export const Container = styled.section`
         width: 100%;
 
         .transition {
-            background: linear-gradient(to top, #2F3838af, #fff0);
+            background: linear-gradient(to top, #2F3838cf, #fff0);
             width: 100%;
             height: 10%;
         }
 
         .rest {
-            background: #2F3838af;
+            background: #2F3838cf;
             width: 100%;
             height: 90%;
             display: flex;
             flex-direction: column;
+            color: var(--bege);
 
             h1 {
                 text-align: center;
@@ -55,6 +56,8 @@ export const Container = styled.section`
                 justify-self: flex-end;
                 display: flex;
                 justify-content: space-between;
+                color: var(--blue);
+                text-shadow: 0 0 4px #000;
 
                 @media (max-width: 768px) {
                     flex-direction: column;
@@ -69,10 +72,6 @@ export const Container = styled.section`
                     align-items: center;
                     justify-content: center;
                     flex-direction: column;
-
-                    &:before {
-                        background: #2F3838af;
-                    }
 
                     h3 {
                         font-size: 2rem;
