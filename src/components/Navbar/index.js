@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Hamburguer,
   MiddleLink,
@@ -22,11 +23,11 @@ const Navbar = () => {
           <span />
         </Hamburguer>
         <Menu isOpen={isOpen}>
-          <MenuLink href="#">Início</MenuLink>
-          <MenuLink href="#">Pintores</MenuLink>
-          <MiddleLink href="#">Struct</MiddleLink>
-          <MenuLink href="#">Obras</MenuLink>
-          <MenuLink href="#">Sobre nós</MenuLink>
+          <MenuLink><Link to="/">Início</Link></MenuLink>
+          <MenuLink><Link to="/#painters">Pintores</Link></MenuLink>
+          <MiddleLink><Link to="/">Struct</Link></MiddleLink>
+          <MenuLink><Link to="/#paintings">Obras</Link></MenuLink>
+          <MenuLink><Link to="/painter">Sobre nós</Link></MenuLink>
         </Menu>
         <Line />
       </Nav>

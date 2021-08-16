@@ -59,26 +59,35 @@ export const Menu = styled.div`
   }
 `;
 
-export const MenuLink = styled.a`
-  text-decoration: none;
-  font-size: 1.3rem;
+export const MenuLink = styled.div`
   padding: 1rem 5.2rem;
-  color: #581f18;
 
-  &:hover{
-    color: #415a77;
+  a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #581f18;
+    transition: all .2s;
+
+  
+    &:hover{
+      color: #415a77;
+    }
   }
 `;
 
-export const MiddleLink = styled.a`
+export const MiddleLink = styled.div`
   padding: 1rem 5.2rem;
-  color: #581f18;
-  font-size: 1.4rem;
-  text-decoration: none;
-  font-weight: 600;
 
-  &:hover{
-    color: #415a77;
+  a {
+    color: #581f18;
+    font-size: 1.4rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all .2s;
+  
+    &:hover{
+      color: #415a77;
+    }
   }
 `;
 
