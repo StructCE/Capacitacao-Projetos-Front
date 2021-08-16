@@ -42,7 +42,7 @@ const Home = () => {
                 </div>
                 <div className="bottom-bar"></div>
             </ImageSection>
-            <p className="intro-text">
+            <p className="intro-text" id="aboutus">
                 la Voûete des Couleurs é a sua galeria digital!
                 Temos inúmeras pinturas em altíssima qualidade,
                 além de conteúdos educativos para te ajudar a

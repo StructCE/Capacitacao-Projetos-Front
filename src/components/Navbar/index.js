@@ -29,7 +29,7 @@ const Navbar = () => {
           <MenuLink><HashLink to="/#painters">Pintores</HashLink></MenuLink>
           <MiddleLink><Link to="/">Struct</Link></MiddleLink>
           <MenuLink><HashLink to="/#paintings">Obras</HashLink></MenuLink>
-          <MenuLink><Link to="/painter">Sobre nós</Link></MenuLink>
+          <MenuLink><HashLink to="/#aboutus">Sobre nós</HashLink></MenuLink>
         </Menu>
         <Line />
       </Nav>

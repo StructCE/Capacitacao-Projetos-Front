@@ -13,43 +13,26 @@ const HorizontalScroll = ({ paintings }) => {
     return (
         <Container>
             <Swiper
-                slidesPerView={3}
+                slidesPerView={1}
                 grabCursor
                 loop
-                spaceBetween={30}
+                spaceBetween={10}
+                centeredSlides
+                breakpoints={{
+                    "640": {
+                        "slidesPerView": 2,
+                        "spaceBetween": 20
+                    },
+                    "768": {
+                        "slidesPerView": 3,
+                        "spaceBetween": 40
+                    },
+                    "1024": {
+                        "slidesPerView": 4,
+                        "spaceBetween": 50
+                    }
+                }}
             >
-                {
-                    paintings &&
-                    paintings.map(painting =>
-                    <SwiperSlide key={painting.id}>
-                        <div onClick={() => history.push(`/${painting.type}/${painting.id}`)}>
-                            <h3>{painting.name}</h3>
-                        </div>
-                        <img src={
-                            painting.image_url ?
-                            `http://localhost:3000${painting.image_url}` 
-                            : placeholder
-                        }
-                        alt={painting.name}
-                        />
-                    </SwiperSlide>)
-                }
-                {
-                    paintings &&
-                    paintings.map(painting =>
-                    <SwiperSlide key={painting.id}>
-                        <div onClick={() => history.push(`/${painting.type}/${painting.id}`)}>
-                            <h3>{painting.name}</h3>
-                        </div>
-                        <img src={
-                            painting.image_url ?
-                            `http://localhost:3000${painting.image_url}` 
-                            : placeholder
-                        }
-                        alt={painting.name}
-                        />
-                    </SwiperSlide>)
-                }
                 {
                     paintings &&
                     paintings.map(painting =>

@@ -39,11 +39,11 @@ export const Container = styled.section`
                 }
 
                 &:hover {
-                    background: #4a58599f;
+                    background: #415a77af;
 
                     h3 {
                         display: block;
-                        color: var(--red);
+                        color: var(--green);
                     }
                 }
             }
