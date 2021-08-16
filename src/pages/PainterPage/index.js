@@ -1,5 +1,4 @@
 import { Container, InfoContainer } from './styles'
-import ScrollItem from '../../components/ScrollItem'
 import VerticalScroll from '../../components/VerticalScroll'
 import placeholder from '../../assets/BaseUserPicture.jpg'
 import { useParams } from 'react-router-dom'
@@ -37,9 +36,7 @@ const PainterPage = () => {
                     {painter.bio}
                 </p>
             </InfoContainer>
-            <VerticalScroll paintings={painter.paintings}>
-                
-            </VerticalScroll>
+            <VerticalScroll paintings={painter.paintings}/>
         </Container>
     )
 }

@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import { Home } from '../pages/Home';
+import Home from '../pages/Home';
 import LoginPage from '../pages/LoginPage'
 import PainterPage from '../pages/PainterPage';
 import RegisterPage from '../pages/RegisterPage'
