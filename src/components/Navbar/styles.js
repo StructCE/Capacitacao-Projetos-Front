@@ -101,3 +101,7 @@ export const Logo = styled.h1`
     
   }
 `;
+
+export const LogOut = styled.div`
+  color: var(--red);
+`;
