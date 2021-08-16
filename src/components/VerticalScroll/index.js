@@ -30,7 +30,9 @@ const HorizontalScroll = ({ paintings }) => {
                             painting.image_url ?
                             `http://localhost:3000${painting.image_url}` 
                             : placeholder
-                        }/>
+                        }
+                        alt={painting.name}
+                        />
                     </SwiperSlide>)
                 }
                 {
@@ -44,7 +46,9 @@ const HorizontalScroll = ({ paintings }) => {
                             painting.image_url ?
                             `http://localhost:3000${painting.image_url}` 
                             : placeholder
-                        }/>
+                        }
+                        alt={painting.name}
+                        />
                     </SwiperSlide>)
                 }
                 {
@@ -58,7 +62,9 @@ const HorizontalScroll = ({ paintings }) => {
                             painting.image_url ?
                             `http://localhost:3000${painting.image_url}` 
                             : placeholder
-                        }/>
+                        }
+                        alt={painting.name}
+                        />
                     </SwiperSlide>)
                 }
                 {
@@ -72,7 +78,9 @@ const HorizontalScroll = ({ paintings }) => {
                             painting.image_url ?
                             `http://localhost:3000${painting.image_url}` 
                             : placeholder
-                        }/>
+                        }
+                        alt={painting.name}
+                        />
                     </SwiperSlide>)
                 }
             </Swiper>

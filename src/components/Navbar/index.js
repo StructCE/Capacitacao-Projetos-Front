@@ -9,6 +9,8 @@ import {
   Line,
   Logo,
 } from "./styles";
+import { HashLink } from 'react-router-hash-link';
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,9 +26,9 @@ const Navbar = () => {
         </Hamburguer>
         <Menu isOpen={isOpen}>
           <MenuLink><Link to="/">Início</Link></MenuLink>
-          <MenuLink><Link to="/#painters">Pintores</Link></MenuLink>
+          <MenuLink><HashLink to="/#painters">Pintores</HashLink></MenuLink>
           <MiddleLink><Link to="/">Struct</Link></MiddleLink>
-          <MenuLink><Link to="/#paintings">Obras</Link></MenuLink>
+          <MenuLink><HashLink to="/#paintings">Obras</HashLink></MenuLink>
           <MenuLink><Link to="/painter">Sobre nós</Link></MenuLink>
         </Menu>
         <Line />

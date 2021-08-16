@@ -36,7 +36,7 @@ const Home = () => {
     return (
         <Container>
             <ImageSection image={Savage}>
-                <div style={{display: 'flex', flex: 1}}></div>
+                <div className="top-bar"></div>
                 <div className="middle">
                     <h1>la Voûte des Couleurs</h1>
                 </div>
@@ -54,7 +54,7 @@ const Home = () => {
                 <div className="middle"></div>
                 <div className="bottom-bar"></div>
             </ImageSection>
-            <ScrollSection>
+            <ScrollSection id="painters">
                 <h2>Nossos Artistas</h2>
                 <HorizontalScroll paintings={painters} />
             </ScrollSection>
@@ -63,7 +63,7 @@ const Home = () => {
                 <div className="middle"></div>
                 <div className="bottom-bar"></div>
             </ImageSection>
-            <ScrollSection>
+            <ScrollSection id="styles">
                 <h2>Nossos Estilos</h2>
                 <HorizontalScroll paintings={styles} />
             </ScrollSection>
@@ -72,7 +72,7 @@ const Home = () => {
                 <div className="middle"></div>
                 <div className="bottom-bar"></div>
             </ImageSection>
-            <ScrollSection>
+            <ScrollSection id="paintings">
                 <h2>Nossas pinturas</h2>
                 <HorizontalScroll paintings={paintings} />
             </ScrollSection>
