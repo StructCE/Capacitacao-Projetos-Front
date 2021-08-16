@@ -27,7 +27,7 @@ const PainterPage = () => {
     return (
         <Container>
             <InfoContainer>
-                <img src={placeholder} alt="Foto do Artista" />
+                <img src={painter.image_url ? `http://localhost:3000${painter.image_url}` : placeholder} alt="Foto do Artista" />
                 <div>
                     <h1>{painter.name}</h1>
                     <span>{painter.born}/{painter.died}</span>
