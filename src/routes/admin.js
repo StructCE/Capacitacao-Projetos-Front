@@ -1,7 +1,7 @@
 import { Route, Switch, useRouteMatch } from "react-router-dom"
 import { useUserContext } from "../hooks/useUserContext"
 import CreatePainter from "../pages/CreatePainter"
-import { Home } from "../pages/Home"
+import Home from "../pages/Home"
 
 const AdminRoutes = () => {
     
