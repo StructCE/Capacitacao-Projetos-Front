@@ -56,7 +56,7 @@ const PaintingPage = () => {
                                 user.is_admin &&
                                 <>
                                     <FiTrash2 />
-                                    <BiPencil />
+                                    <BiPencil onClick={() => history.push(`/admin/painting/${id}/edit`)} />
                                     <form onSubmit={handlePhotoUpload}>
                                         <label>
                                             <input 
