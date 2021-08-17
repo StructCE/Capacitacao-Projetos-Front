@@ -34,7 +34,7 @@ const UpdateStyle = () => {
             const response = await api.get('style/show/'+id)
             console.log(response)
             if (response.data){
-              setPhotoURL(response.data.image_url ? "http://127.0.0.1:3000"+response.data.photo_url : placeholder)
+              setPhotoURL(response.data.image_url ? "http://127.0.0.1:3000"+response.data.image_url : placeholder)
               setDescription(response.data.description)
               setStylename(response.data.name)
             }
@@ -86,7 +86,7 @@ const UpdateStyle = () => {
                   const res = await api.put('style/add_photo/'+id, formData)
                   console.log(res)
                 }
-                history.push('/#styles')
+                history.push('/style/'+id)
                 alert("Atualizado com sucesso!")
             } catch(e){
                 alert("Erro, tente novamente")

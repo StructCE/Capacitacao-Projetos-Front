@@ -1,63 +1,63 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-    display: block;
-    flex: 1;
-    height: 100vh;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
-    @media screen and (max-width: 768px) {
-        flex-direction: column;
-    }
+    .info-section {
+        flex: 3;
+        display: flex;
+        padding: 2rem;
 
-`;
+        img {
+            flex: 1;
+            max-width: 20rem;
+            max-height: 40rem;
+            object-fit: cover;
+        }
 
-export const Title = styled.p`
-    margin: auto;
-    margin-top: 1rem;
-    font: Parisienne;
-    font-size: 4rem;
-    color: #415A77;
-`;
+        div {
+            flex: 4;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            color: var(--grey);
+
+            .admin-actions {
+                flex: 0;
+                display: flex;
+                flex-direction: row;
+
+                svg {
+                    align-self: flex-end;
+                    font-size: 1.5rem;
+    
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
 
 
-export const LeftSector = styled.div`
-    @media screen and (min-width: 768px) {
-        float: left;
-        width: 50%;
-        img{
-            margin-top: -4rem;
-            max-width: 50%;
-            max-height: 40%;
+            p {
+                font-size: 1.2rem;
+                white-space: pre-wrap;
+                text-align: center;
+                width: clamp(50ch, 75%, 75ch);
+                align-self: center;
+            }
+
+            h1 {
+                font-size: 3rem;
+                font-family: 'Parisienne';
+            }
         }
     }
-    width: 100%;
-    align-self: center;
-    img{
-        max-width: 50%;
-        max-height: 40%;
+
+    section {
+        flex: 1;
     }
 `;
-export const RightSector = styled.div`
-    @media screen and (min-width: 768px) {
-        float: right;
-        width: 50%;
-        p{  
-        max-width: 60%;
-        text-align: left;
-
-    }
-    }
-    width: 100%;
-    align-self: center;
-    p{  
-        max-width: 100%;
-        margin: 0 0.5rem;
-        text-align: center;
-        font-size: 1.25rem;
-        color: #415A77;
-
-    }
-    
-`;
-
