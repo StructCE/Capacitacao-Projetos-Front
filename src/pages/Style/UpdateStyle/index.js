@@ -1,6 +1,6 @@
 import Input from "../../../components/Input"
 import TextArea from "../../../components/TextArea"
-import { FiItalic, FiFileText } from 'react-icons/fi'
+import { FiItalic, FiFileText, FiTrash2 } from 'react-icons/fi'
 import {
         Container,
         ImageInput,
@@ -14,11 +14,12 @@ import Button from "../../../components/Button"
 import placeholder from '../../../assets/StylePlaceholder.jpg';
 import { BiCamera } from 'react-icons/bi'
 import { api } from '../../../services/api'
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 
 const UpdateStyle = () => {
 
     let { id } = useParams()
+    const history = useHistory();
 
     const [photoURL, setPhotoURL] = useState('');
     const [description, setDescription] = useState('')
@@ -40,12 +41,22 @@ const UpdateStyle = () => {
             }
         } catch(e){
             alert("Erro, tente novamente")
+            history.push("/")
         }
     }
 
     useEffect (() => {
         handleApiRequests()
     }, [])
+
+    const deleteStyle = () => {
+        if (window.confirm("Realmente deseja excluir o estilo?")){
+          api.delete('style/delete/'+id)
+        .then(() => {
+          history.push('/')
+        })
+        }
+      }
 
     
 
@@ -77,6 +88,7 @@ const UpdateStyle = () => {
                   console.log(res)
                 }
                 history.push('/#styles')
+                alert("Atualizado com sucesso!")
             } catch(e){
                 alert("Erro, tente novamente")
             }
@@ -91,6 +103,7 @@ const UpdateStyle = () => {
             </LeftSector>
             <CenterSector>
                 <h1>Editar Estilo</h1>
+                <FiTrash2 className='delete_icon' size={36} onClick={deleteStyle}/>
                 <InputSection onSubmit={handleSubmit}>
                     <Input
                         Icon={FiItalic}

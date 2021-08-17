@@ -19,6 +19,14 @@ export const Container = styled.section`
         object-fit: cover;
     }
 
+    .delete_icon {
+        color:  #c80000;
+        align-self: center;
+        :hover{
+            cursor: pointer;
+        }
+    }
+
 `;
 
 export const ImageInput = styled.form`
