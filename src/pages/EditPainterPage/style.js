@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import LeftImage from '../../../assets/LeftImage.jpg'
-import RightImage from '../../../assets/RightImage.jpg'
+import LeftImage from '../../assets/VGogh.jpg'
+import RightImage from '../../assets/Monet.jpg'
 
 export const Container = styled.section`
     display: flex;
@@ -9,59 +9,6 @@ export const Container = styled.section`
 
     @media screen and (max-width: 768px) {
         flex-direction: column;
-    }
-
-    img {
-        align-self: center;
-        height: 15rem;
-        width: 15rem;
-        border-radius: 10%;
-        object-fit: cover;
-    }
-
-`;
-
-export const ImageInput = styled.form`
-
-    height: 15rem;
-    width: 15rem;
-    border-radius: 10%;
-    position: absolute;
-    background: #415a7799;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    transition: all .5s;
-    opacity: 0;
-    margin-top: 5rem;
-    align-self: center;
-
-    input[type="file"] {
-        display: none;
-    }
-
-    &:hover {
-        opacity: 1;
-    }
-
-    .custom-file-input:hover {
-        cursor: pointer;
-    }
-
-    button {
-        background: #fff0;
-        font-family: inherit;
-        color: var(--red);
-        border: 2px var(--red) solid;
-        border-radius: 5px;
-        padding: 4px;
-        transition: all .2s;
-
-        &:hover {
-            background: var(--bege);
-            cursor: pointer;
-        }
     }
 `;
 
@@ -106,11 +53,8 @@ export const CenterSector = styled.div`
     }
 
     @media screen and (max-width: 768px) {
-        flex: 2;
-        
         h1 {
             font-size: 2rem;
-            margin-bottom: 2%;
         }
     }
 `;
@@ -122,13 +66,7 @@ export const InputSection = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
-`;
-
-export const ErrorSection = styled.span`
-    color: #c00;
-    font-family: 'Merienda One';
-    text-align: center;
-`;
+`
 
 export const RightSector = styled.div`
     display: flex;

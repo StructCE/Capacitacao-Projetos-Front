@@ -7,8 +7,7 @@ import {
         LeftSector,
         CenterSector,
         RightSector,
-        InputSection,
-        ErrorSection
+        InputSection
 } from './style'
 import { useState } from "react"
 import Button from "../../../components/Button"
