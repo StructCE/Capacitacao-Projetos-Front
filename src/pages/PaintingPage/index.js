@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { api } from '../../services/api'
 import { Container, Painter, Style } from './styles'
+import { FiPlus } from 'react-icons/fi'
+import { useUserContext } from '../../hooks/useUserContext'
 
 const PaintingPage = () => {
     let { id } = useParams()
 
     const [painting, setPainting] = useState({})
+    const { user } = useUserContext()
 
     const handleApiRequest = async () => {
         try {
@@ -28,6 +31,10 @@ const PaintingPage = () => {
             <div className="info-area">
                 <div className="transition"></div>
                 <div className="rest">
+                    {
+                        user &&
+                        <FiPlus onClick={`/painting/${painting.id}/link`} />
+                    }
                     <h1>{painting.name}</h1>
                     <p>
                         {painting.description}

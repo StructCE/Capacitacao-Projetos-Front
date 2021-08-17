@@ -1,21 +1,24 @@
 import { useUserContext } from "../../hooks/useUserContext";
 import {
-    Container,
-    NoUser,
     InformationContainer,
-    ImageInput
+    ImageInput,
+    GalleryContainer,
+    GalleryItem
 } from "./styles";
 import placeholder from '../../assets/BaseUserPicture.jpg';
 import { BiCamera } from 'react-icons/bi'
 import { useState } from "react";
 import { api } from "../../services/api";
 import { RiPencilLine } from "react-icons/ri"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Button from "../../components/Button";
 
 const ProfilePage = () => {
 
     const { user, refreshUser } = useUserContext()
     const [photo, setPhoto] = useState(null)
+
+    const history = useHistory()
 
     const handlePhotoUpload = async (e) => {
         e.preventDefault()
@@ -36,7 +39,7 @@ const ProfilePage = () => {
         <>
             {
                 user ?
-                <Container>
+                <>
                     <InformationContainer>
                         <div>
                             <ImageInput onSubmit={handlePhotoUpload}>
@@ -61,11 +64,32 @@ const ProfilePage = () => {
                             <span>{user.email}</span>
                         </div>
                     </InformationContainer>
-                </Container>
+                    <GalleryContainer>
+                        <div className="gallery-wraper">
+                            {
+                                user.galleries &&
+                                user.galleries.map(gallery =>
+                                    <GalleryItem 
+                                        key={gallery.id} 
+                                        image={
+                                            gallery.image_url ?
+                                            `http:127.0.0.1:3000${gallery.image_url}` : 
+                                            placeholder
+                                        }
+                                        onClick={() => history.push(`/user/gallery/${gallery.id}`)}
+                                    >
+                                        <div><h3>{gallery.name}</h3></div>
+                                    </GalleryItem>
+                                )
+                            }
+                        </div>
+                        <Button onClick={() => history.push('/user/gallery/create')}>
+                            Criar nova galeria
+                        </Button>
+                    </GalleryContainer>
+                </>
                 :
-                <NoUser>
-
-                </NoUser>
+                <></>
             }
         </>
     )
