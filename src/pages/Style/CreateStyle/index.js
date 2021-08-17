@@ -96,18 +96,18 @@ const CreateStyle = () => {
                     />
                     
                     <ImageInput /*onSubmit={handlePhotoUpload}*/>
-                                <label className="custom-file-input">
-                                    <BiCamera size={36} />
-                                    <input
-                                        type="file"
-                                        onChange={event => {
-                                            setPhoto(URL.createObjectURL(event.target.files[0]))
-                                            setTempPhoto(event.target.files[0])
-                                        }}
-                                    />
-                                </label>
-                            </ImageInput>
-                            <img src={photo?photo:placeholder} alt="Foto do estilo" />
+                        <label className="custom-file-input">
+                            <BiCamera size={36} />
+                            <input
+                                type="file"
+                                onChange={event => {
+                                    setPhoto(URL.createObjectURL(event.target.files[0]))
+                                    setTempPhoto(event.target.files[0])
+                                }}
+                            />
+                        </label>
+                    </ImageInput>
+                    <img src={photo?photo:placeholder} alt="Foto do estilo" />
                     <Button type='submit'>
                         Cadastrar
                     </Button>
