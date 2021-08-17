@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import { Container } from './style'
 
-const TextArea = ({ Icon, ...props }) => {
+import { InputContainer, Container } from './style'
+import { useState } from 'react';
 
+const TextArea = ({ Icon, failed, failureMessage, ...props }) => {
     const [isFocused, setIsFocoused] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
 
@@ -16,13 +16,16 @@ const TextArea = ({ Icon, ...props }) => {
     }
 
     return (
-        <Container isFilled={isFilled} isFocused={isFocused}>
-            <Icon size={18} />
-            <textarea
-                onFocus={handleOnFocus}
-                onBlur={handleOnBlur}
-                {...props}
-            />
+        <Container>
+            <InputContainer isFilled={isFilled} isFocused={isFocused} failed={failed}>
+                <Icon size={18} />
+                <textarea
+                    onFocus={handleOnFocus}
+                    onBlur={handleOnBlur}
+                    {...props}
+                />
+            </InputContainer>
+            { failed && <span>{failureMessage}</span> }
         </Container>
     )
 }
