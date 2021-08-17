@@ -128,4 +128,13 @@ export const GalleryItem = styled.div`
     }
 `;
 
-export const AdminContainer = styled.section``
+export const AdminContainer = styled.section`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+
+    button {
+        margin: 0 2rem;
+    }
+`

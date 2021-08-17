@@ -3,7 +3,8 @@ import {
     InformationContainer,
     ImageInput,
     GalleryContainer,
-    GalleryItem
+    GalleryItem,
+    AdminContainer
 } from "./styles";
 import placeholder from '../../assets/BaseUserPicture.jpg';
 import { BiCamera } from 'react-icons/bi'
@@ -71,6 +72,20 @@ const ProfilePage = () => {
                             <span>{user.email}</span>
                         </div>
                     </InformationContainer>
+                    {
+                        user.is_admin &&
+                        <AdminContainer>
+                            <Button onClick={() => history.push('/admin/painting/create')}>
+                                Criar Pintura
+                            </Button>
+                            <Button onClick={() => history.push('/admin/create-style')}>
+                                Criar Estilo
+                            </Button>
+                            <Button onClick={() => history.push('/admin/painter/create')}>
+                                Criar Pintor
+                            </Button>
+                        </AdminContainer>
+                    }
                     <GalleryContainer>
                         <div className="gallery-wraper">
                             {
