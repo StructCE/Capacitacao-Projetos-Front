@@ -8,7 +8,6 @@ import {
         CenterSector,
         RightSector,
         InputSection,
-        ErrorSection
 } from './style'
 import { useState, useEffect } from "react"
 import Button from "../../../components/Button"
@@ -30,19 +29,23 @@ const UpdateStyle = () => {
     const [photo, setPhoto] = useState(null)
     const [tempPhoto, setTempPhoto] = useState(null)
 
-    useEffect (async () => {
-      try {	       
-        const response = await api.get('style/show/'+id)
-        console.log(response)
-        if (response.data){
-          setPhotoURL("http://127.0.0.1:3333"+response.data.photo_url)
-          setDescription(response.data.description)
-          setStylename(response.data.name)
+    const handleApiRequests = async () => {
+        try {	       
+            const response = await api.get('style/show/'+id)
+            console.log(response)
+            if (response.data){
+              setPhotoURL(response.data.image_url ? "http://127.0.0.1:3000"+response.data.photo_url : placeholder)
+              setDescription(response.data.description)
+              setStylename(response.data.name)
+            }
+        } catch(e){
+            alert("Erro, tente novamente")
+            history.push("/")
         }
-    } catch(e){
-        alert("Erro, tente novamente")
-        history.push("/")
     }
+
+    useEffect (() => {
+        handleApiRequests()
     }, [])
 
     const deleteStyle = () => {
@@ -82,11 +85,11 @@ const UpdateStyle = () => {
                   formData.append('photo', tempPhoto)
                   const res = await api.put('style/add_photo/'+id, formData)
                   console.log(res)
-                  alert("Atualizado com sucesso!")
-                }  
+                }
+                history.push('/#styles')
+                alert("Atualizado com sucesso!")
             } catch(e){
                 alert("Erro, tente novamente")
-                history.push("/")
             }
         } 
     }

@@ -97,6 +97,7 @@ export const GalleryItem = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     transition: all .5s;
+    background-position: center;
 
     div {
         height: 100%;
@@ -126,3 +127,5 @@ export const GalleryItem = styled.div`
         }
     }
 `;
+
+export const AdminContainer = styled.section``

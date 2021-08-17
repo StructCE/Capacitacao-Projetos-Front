@@ -7,12 +7,13 @@ import { Container, ImageInput } from "./styles"
 import placeholder from "../../assets/Home/Consumation.jpg"
 import { RiPencilLine } from "react-icons/ri"
 import { BiCamera } from 'react-icons/bi'
+import { FiTrash2 } from "react-icons/fi"
 
 const GalleryPage = () => {
 
     const [gallery, setGallery] = useState({})
     const { id } = useParams()
-    const { loaded } = useUserContext()
+    const { loaded, refreshUser } = useUserContext()
     const history = useHistory()
     const [photo, setPhoto] = useState(null)
 
@@ -41,6 +42,17 @@ const GalleryPage = () => {
         }
     }
 
+    const handleDelete = async () => {
+        try {
+            const response = await api.delete(`/gallery/delete/${id}`)
+            response && 
+                refreshUser()
+                history.push('/user')
+        } catch(e) {
+            alert(e)
+        }
+    }
+
     useEffect(() => {
         loaded &&
             handleApiRequests()
@@ -66,7 +78,16 @@ const GalleryPage = () => {
                     </button>
                 </ImageInput>
             </div>
-            <RiPencilLine onClick={() => history.push(`/user/gallery/${id}/edit`)} />
+            <div className="actions">
+                <FiTrash2
+                    onClick={handleDelete}
+                />
+                <RiPencilLine
+                    style={{justifySelf: 'flex-end'}}
+                    onClick={() => history.push(`/user/gallery/${id}/edit`)}
+                />
+
+            </div>
             <h1>{gallery.name}</h1>
             <HorizontalScroll paintings={gallery.paintings} />
         </Container>

@@ -16,7 +16,7 @@ const CreateGalleryPage = () => {
 
     const [name, setName] = useState('')
 
-    const { user } = useUserContext()
+    const { user, refreshUser } = useUserContext()
     const history = useHistory()
 
     const handleSubmit = async (e) => {
@@ -30,6 +30,7 @@ const CreateGalleryPage = () => {
                 }
             })
             console.log(response.data)
+            refreshUser()
             history.push('/user')
         } catch(e) {
             console.log(e)

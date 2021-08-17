@@ -113,7 +113,8 @@ const UserProvider = ({ children }) => {
                 setUser(null)
                 history.go(0)
         } catch(e) {
-            alert(e)
+            Cookies.removeItem('laVoute/User')
+            setUser(null)
         }
     }
 
