@@ -43,6 +43,15 @@ const PaintingPage = () => {
         }
     }
 
+    const handleDelete = async () => {
+        try {
+            await api.delete(`paintings/delete/${id}`)
+            history.go(1)
+        } catch(e) {
+            alert(e)
+        }
+    }
+
     return (
         <Container image={painting.image_url}>
             <div className="initial-area"></div>
@@ -55,7 +64,7 @@ const PaintingPage = () => {
                             {
                                 user.is_admin &&
                                 <>
-                                    <FiTrash2 />
+                                    <FiTrash2 onClick={handleDelete} />
                                     <BiPencil onClick={() => history.push(`/admin/painting/${id}/edit`)} />
                                     <form onSubmit={handlePhotoUpload}>
                                         <label>
