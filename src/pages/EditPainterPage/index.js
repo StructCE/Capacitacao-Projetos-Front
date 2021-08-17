@@ -11,14 +11,15 @@ import {
   InputSection
 } from "../CreatePainter/style";
 import { api } from "../../services/api";
-import { useState } from "react";
-import { useHistory } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import { useHistory, useParams } from 'react-router-dom'
 
 const EditPainter = () => {
   const [name, setName] = useState("");
   const [born, setBorn] = useState("");
   const [died, setDied] = useState("");
   const [bio, setBio] = useState("");
+  let { id } = useParams()
 
   const history = useHistory();
 
@@ -35,7 +36,7 @@ const EditPainter = () => {
       alert("Biografia de senha deve estar preenchida.");
     }
 
-    const response = await api.post('/painter/create', {
+    const response = await api.put('/painter/update/'+id, {
       painter: {
         name, 
         born, 
@@ -45,10 +46,26 @@ const EditPainter = () => {
     })
 
     if(response.data){
-      alert('pintor criado!')
-      history.push('/login')
+      alert('pintor atualizado!')
+      history.push('/painter/'+id)
     }
   };
+
+  const handleApiRequests = async () => {
+    try {
+      const response = await api.get(`/painter/show/${id}`)
+      setName(response.data.name)
+      setBorn(response.data.born)
+      setDied(response.data.died)
+      setBio(response.data.bio)
+    } catch(e) {
+
+    }
+  }
+
+  useEffect(() => {
+    handleApiRequests()
+  }, [])
 
   return (
     <Container>
@@ -59,13 +76,20 @@ const EditPainter = () => {
       <CenterSector>
         <InputSection onSubmit={handleSubmit}>
         <h1>Adicione novos pintores</h1>
-        <Input Icon={FiUser} placeholder={"Nome do Artista"} type={"text"} onChange={(value) => setName(value.target.value)} />
+        <Input 
+          Icon={FiUser} 
+          placeholder={"Nome do Artista"} 
+          type={"text"} 
+          onChange={(value) => setName(value.target.value)}
+          value={name} 
+        />
 
         <Input
           Icon={FiCalendar}
           placeholder={"Data de Nascimento"}
           type={"date"}
           onChange={(value) => setBorn(value.target.value)}
+          value={born}
         />
 
         <Input
@@ -73,9 +97,15 @@ const EditPainter = () => {
           placeholder={"Data de Morte"}
           type={"date"}
           onChange={(value) => setDied(value.target.value)}
+          value={died}
         />
 
-        <TextArea Icon={FiBookOpen} placeholder={"Biografia"} onChange={(value) => setBio(value.target.value)}/>
+        <TextArea 
+          Icon={FiBookOpen} 
+          placeholder={"Biografia"} 
+          onChange={(value) => setBio(value.target.value)}
+          value={bio}
+        />
 
         <Button type="submit">Criar Pintor</Button>
         </InputSection>
