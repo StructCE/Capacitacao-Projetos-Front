@@ -20,7 +20,7 @@ const Routes = () => {
             <Route path='/painter/:id' component={PainterPage} />
             <Route exact path='/painting/:id' component={PaintingPage} />
             <Route exact path='/painting/:id/link' component={LinkPaintingPage} />
-            <Route exact path='/style' component={Style} />
+            <Route exact path='/style/:id' component={Style} />
         </Switch>
     )
 }

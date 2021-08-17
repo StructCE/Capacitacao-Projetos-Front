@@ -34,7 +34,7 @@ export const ImageInput = styled.form`
     flex-direction: column;
     transition: all .5s;
     opacity: 0;
-    margin-top: 4rem;
+    margin-top: 5rem;
     align-self: center;
 
     input[type="file"] {
