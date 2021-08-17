@@ -1,4 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
+import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import UserProvider from './hooks/useUserContext';
 import Routes from './routes';
@@ -12,6 +13,7 @@ function App() {
         <GlobalStyle />
         <Routes />
       </UserProvider>
+      <Footer />
     </BrowserRouter>
   );
 }
