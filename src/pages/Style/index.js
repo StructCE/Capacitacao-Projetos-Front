@@ -4,11 +4,11 @@ import {
         LeftSector,
         RightSector
 } from './style'
-import Futurismo from "../../assets/Futurismo.jpeg"
 import { useState, useEffect } from "react"
 import { api } from '../../services/api'
 import { useParams, useHistory } from 'react-router-dom'
 import HorizontalScroll from '../../components/HorizontalScroll'
+import placeholder from '../../assets/Futurismo.jpeg'
 
 const Style = () => {
 
@@ -20,15 +20,21 @@ const Style = () => {
     const [styleName, setStylename] = useState('')
     const [photo, setPhoto] = useState(null)
     const [tempPhoto, setTempPhoto] = useState(null)
+    const [paintings, setPaintings] = useState([])
 
     useEffect (async () => {
       try {	       
         const response = await api.get('style/show/'+id)
         console.log(response)
         if (response.data){
-          setPhotoURL("http://127.0.0.1:3333"+response.data.photo_url)
+          setPhotoURL(
+                response.data.image_url ? 
+                "http://127.0.0.1:3000"+response.data.image_url :
+                placeholder
+            )
           setDescription(response.data.description)
           setStylename(response.data.name)
+          setPaintings(response.data.paintings)
         }
     } catch(e){
         alert("Erro, tente novamente")
@@ -49,6 +55,7 @@ const Style = () => {
                 <RightSector>
                     <p>{description}</p>
                 </RightSector>
+                <HorizontalScroll paintings={paintings} />
         </Container>
     )
 }
