@@ -17,13 +17,14 @@ const EditGalleryPage = () => {
     const [name, setName] = useState('')
 
     let { id } = useParams()
-    const { user, loaded } = useUserContext()
+    const { user, loaded, refreshUser } = useUserContext()
     const history = useHistory()
 
     const handleApiRequest = async () => {
         try {
             const response = await api.get(`/gallery/show/${id}`)
-            setName(response.data.name)
+            response &&
+                setName(response.data.name)
         } catch(e) {
             alert(e)
         }
@@ -45,6 +46,7 @@ const EditGalleryPage = () => {
                 }
             })
             console.log(response.data)
+            refreshUser()
             history.push('/user')
         } catch(e) {
             console.log(e)
@@ -68,7 +70,7 @@ const EditGalleryPage = () => {
                         value={name}
                     />
                     <Button type='submit'>
-                        Criar
+                        Editar
                     </Button>
                 </InputSection>
             </CenterSector>

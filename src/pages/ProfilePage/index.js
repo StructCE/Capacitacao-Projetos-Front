@@ -54,7 +54,14 @@ const ProfilePage = () => {
                                     Mudar de foto
                                 </button>
                             </ImageInput>
-                            <img src={!user.user_photo ? placeholder : `http://127.0.0.1:3000${user.user_photo}`} alt="Foto de perfil" />
+                            <img 
+                                src={
+                                        !user.user_photo ?
+                                        placeholder :
+                                        `http://127.0.0.1:3000${user.user_photo}`
+                                    } 
+                                alt="Foto de perfil" 
+                            />
                         </div>
                         <div className="info">
                             <Link to="/user/edit">

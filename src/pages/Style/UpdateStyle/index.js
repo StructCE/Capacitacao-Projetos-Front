@@ -1,6 +1,6 @@
 import Input from "../../../components/Input"
 import TextArea from "../../../components/TextArea"
-import { FiItalic, FiFileText, FiImage } from 'react-icons/fi'
+import { FiItalic, FiFileText } from 'react-icons/fi'
 import {
         Container,
         ImageInput,
@@ -8,14 +8,13 @@ import {
         CenterSector,
         RightSector,
         InputSection,
-        ErrorSection
 } from './style'
 import { useState, useEffect } from "react"
 import Button from "../../../components/Button"
 import placeholder from '../../../assets/StylePlaceholder.jpg';
 import { BiCamera } from 'react-icons/bi'
 import { api } from '../../../services/api'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 const UpdateStyle = () => {
 
@@ -28,19 +27,24 @@ const UpdateStyle = () => {
     const [descriptionFailure, setDescriptionFailure] = useState(false)
     const [photo, setPhoto] = useState(null)
     const [tempPhoto, setTempPhoto] = useState(null)
+    const history = useHistory()
 
-    useEffect (async () => {
-      try {	       
-        const response = await api.get('style/show/'+id)
-        console.log(response)
-        if (response.data){
-          setPhotoURL("http://127.0.0.1:3333"+response.data.photo_url)
-          setDescription(response.data.description)
-          setStylename(response.data.name)
+    const handleApiRequests = async () => {
+        try {	       
+            const response = await api.get('style/show/'+id)
+            console.log(response)
+            if (response.data){
+              setPhotoURL(response.data.image_url ? "http://127.0.0.1:3000"+response.data.photo_url : placeholder)
+              setDescription(response.data.description)
+              setStylename(response.data.name)
+            }
+        } catch(e){
+            alert("Erro, tente novamente")
         }
-    } catch(e){
-        alert("Erro, tente novamente")
     }
+
+    useEffect (() => {
+        handleApiRequests()
     }, [])
 
     
@@ -71,7 +75,8 @@ const UpdateStyle = () => {
                   formData.append('photo', tempPhoto)
                   const res = await api.put('style/add_photo/'+id, formData)
                   console.log(res)
-                }  
+                }
+                history.push('/#styles')
             } catch(e){
                 alert("Erro, tente novamente")
             }

@@ -28,16 +28,21 @@ export const Container = styled.section`
         justify-content: center;
     }
 
-    svg {
-        font-size: 1.5rem;
-        margin: .2rem;
-        align-self: flex-end;
-        z-index: 10;
+    .actions {
+        display: flex;
+        justify-content: space-between;
 
-        &:hover {
-            cursor: pointer;
+        svg {
+            font-size: 1.5rem;
+            margin: .2rem;
+            z-index: 10;
+    
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
+
 
     section {
         flex: 2;
