@@ -28,7 +28,6 @@ const UpdateStyle = () => {
     const [descriptionFailure, setDescriptionFailure] = useState(false)
     const [photo, setPhoto] = useState(null)
     const [tempPhoto, setTempPhoto] = useState(null)
-    const history = useHistory()
 
     const handleApiRequests = async () => {
         try {	       
