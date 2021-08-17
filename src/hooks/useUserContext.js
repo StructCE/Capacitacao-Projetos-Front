@@ -11,6 +11,7 @@ const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const history = useHistory();
     const [error, setError] = useState(false)
+    const [loaded, setLoaded] = useState(false)
 
     const checkCookies = async () => {
         const cookie = await Cookies.getItem('laVoute/User')
@@ -33,6 +34,7 @@ const UserProvider = ({ children }) => {
             Cookies.setItem('laVoute/User', JSON.stringify(response.data))
             setUser(response.data)
             console.log(response.data)
+            setLoaded(true)
         } catch(e) {
             console.error(e)
         }
@@ -100,17 +102,33 @@ const UserProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            const response = await api.get('/logout')
-            Cookies.removeItem('laVoute/User')
-            setUser(null)
-            history.go(0)
+            const response = await api.get('/logout', {
+                headers: {
+                    'X-User-Token': user.authentication_token,
+                    'X-User-Email': user.email
+                }
+            })
+            response &&
+                Cookies.removeItem('laVoute/User')
+                setUser(null)
+                history.go(0)
         } catch(e) {
-
+            alert(e)
         }
     }
 
     return (
-        <UserContext.Provider value={{ user, login, register, error, refreshUser, setUser, update, logout }}>
+        <UserContext.Provider value={{ 
+                user,
+                login, 
+                register, 
+                error, 
+                refreshUser, 
+                setUser, 
+                update, 
+                logout,
+                loaded
+            }}>
             {children}
         </UserContext.Provider>
     )

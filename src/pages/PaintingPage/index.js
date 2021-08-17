@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { api } from '../../services/api'
 import { Container, Painter, Style } from './styles'
 import { FiPlus } from 'react-icons/fi'
@@ -10,6 +10,7 @@ const PaintingPage = () => {
 
     const [painting, setPainting] = useState({})
     const { user } = useUserContext()
+    const history = useHistory()
 
     const handleApiRequest = async () => {
         try {
@@ -33,7 +34,7 @@ const PaintingPage = () => {
                 <div className="rest">
                     {
                         user &&
-                        <FiPlus onClick={`/painting/${painting.id}/link`} />
+                        <FiPlus onClick={() => history.push(`/painting/${painting.id}/link`)} />
                     }
                     <h1>{painting.name}</h1>
                     <p>
