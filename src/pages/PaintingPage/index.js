@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { api } from '../../services/api'
 import { Container, Painter, Style } from './styles'
-import { FiPlus } from 'react-icons/fi'
+import { FiCheck, FiPlus, FiTrash2 } from 'react-icons/fi'
 import { useUserContext } from '../../hooks/useUserContext'
+import { BiCamera, BiPencil } from 'react-icons/bi'
 
 const PaintingPage = () => {
     let { id } = useParams()
@@ -11,6 +12,7 @@ const PaintingPage = () => {
     const [painting, setPainting] = useState({})
     const { user } = useUserContext()
     const history = useHistory()
+    const [photo, setPhoto] = useState(null)
 
     const handleApiRequest = async () => {
         try {
@@ -26,6 +28,30 @@ const PaintingPage = () => {
         handleApiRequest()
     }, [])
 
+    const handlePhotoUpload = async (e) => {
+        e.preventDefault()
+
+        const fd = new FormData()
+        fd.append('picture', photo)
+
+        try {
+            const response = await api.post(`paintings/update_picture/${id}`, fd)
+            setPainting(response.data)
+            console.log(response.data)
+        } catch(e) {
+            alert(e)
+        }
+    }
+
+    const handleDelete = async () => {
+        try {
+            await api.delete(`paintings/delete/${id}`)
+            history.go(1)
+        } catch(e) {
+            alert(e)
+        }
+    }
+
     return (
         <Container image={painting.image_url}>
             <div className="initial-area"></div>
@@ -34,7 +60,32 @@ const PaintingPage = () => {
                 <div className="rest">
                     {
                         user &&
-                        <FiPlus onClick={() => history.push(`/painting/${painting.id}/link`)} />
+                        <div className="action-div">
+                            {
+                                user.is_admin &&
+                                <>
+                                    <FiTrash2 onClick={handleDelete} />
+                                    <BiPencil onClick={() => history.push(`/admin/painting/${id}/edit`)} />
+                                    <form onSubmit={handlePhotoUpload}>
+                                        <label>
+                                            <input 
+                                                type='file'
+                                                onChange={event => setPhoto(event.target.files[0])}
+                                            />
+                                            <BiCamera />
+                                        </label>
+                                        {
+                                            photo &&
+                                            <label>
+                                                <input type='submit' />
+                                                <FiCheck />
+                                            </label>
+                                        }
+                                    </form>
+                                </>
+                            }
+                            <FiPlus onClick={() => history.push(`/painting/${painting.id}/link`)} />
+                        </div>
                     }
                     <h1>{painting.name}</h1>
                     <p>
