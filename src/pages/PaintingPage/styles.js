@@ -32,19 +32,32 @@ export const Container = styled.section`
             flex-direction: column;
             color: var(--bege);
 
-            svg {
-                align-self: flex-end;
-                padding: 4px;
-                color: var(--bege);
-                font-size: 1.5rem;
-                transition: all .6s;
-                text-shadow: 0 0 2px #000;
+            .action-div {
+                display: flex;
+                justify-content: space-around;
 
-                &:hover {
-                    transform: translateY(-5px);
-                    cursor: pointer;
+                form {
+
+                    input {
+                        display: none;
+                    }
+                }
+
+                svg {
+                    align-self: flex-end;
+                    padding: 4px;
+                    color: var(--bege);
+                    font-size: 1.5rem;
+                    transition: all .6s;
+                    text-shadow: 0 0 2px #000;
+    
+                    &:hover {
+                        transform: translateY(-5px);
+                        cursor: pointer;
+                    }
                 }
             }
+
 
             h1 {
                 text-align: center;

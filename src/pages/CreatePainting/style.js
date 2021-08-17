@@ -95,3 +95,27 @@ export const RightSector = styled.div`
         }
     }
 `;
+
+export const selectStyle = {
+    container: (provided, state) => ({
+        ...provided,
+        borderRadius: '8px',
+        border: state.isSelected ? 
+        '1px solid #4a5859' :
+        '1px solid #581f18',
+        width: '95%',
+        outline: 'none',
+        '&:hover': {
+            borderColor: '#581f18'
+        },
+        margin: '.2rem'
+    }),
+
+    controller: (provided) => ({
+        ...provided,
+        border: 'none',
+        '&:hover': {
+            borderColor: '#581f18'
+        },
+    })
+}
