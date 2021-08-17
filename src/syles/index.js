@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
         color: var(--red);
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     * {
         padding: 0;
         margin: 0;

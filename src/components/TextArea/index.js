@@ -1,8 +1,7 @@
-import { useState } from 'react'
+
 import { InputContainer, Container } from './style'
 
 const TextArea = ({ Icon, failed, failureMessage, ...props }) => {
-
     const [isFocused, setIsFocoused] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
 

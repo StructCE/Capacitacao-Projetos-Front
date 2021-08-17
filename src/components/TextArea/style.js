@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 
+
 export const InputContainer = styled.div`
     background: #fff;
     width: 90%;
@@ -8,6 +9,7 @@ export const InputContainer = styled.div`
     display: flex;
     max-height: 6.25rem;
     min-height: 4rem;
+    min-height: 2rem;
     align-items: center;
     margin: 5px;
     border: 1px solid var(--grey);
