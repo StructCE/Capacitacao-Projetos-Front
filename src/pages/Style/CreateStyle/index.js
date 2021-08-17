@@ -7,8 +7,7 @@ import {
         LeftSector,
         CenterSector,
         RightSector,
-        InputSection,
-        ErrorSection
+        InputSection
 } from './style'
 import { useState } from "react"
 import Button from "../../../components/Button"
@@ -53,6 +52,7 @@ const CreateStyle = () => {
                 if (response.status === 201){
                     const res = await api.put('style/add_photo/'+response.data.id, formData)
                     console.log(res)
+                    alert("Criado com sucesso!")
                 }
             } catch(e){
                 alert("Erro, tente novamente")

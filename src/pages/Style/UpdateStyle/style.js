@@ -19,6 +19,14 @@ export const Container = styled.section`
         object-fit: cover;
     }
 
+    .delete_icon {
+        color:  #c80000;
+        align-self: center;
+        :hover{
+            cursor: pointer;
+        }
+    }
+
 `;
 
 export const ImageInput = styled.form`
@@ -34,7 +42,7 @@ export const ImageInput = styled.form`
     flex-direction: column;
     transition: all .5s;
     opacity: 0;
-    margin-top: 5.6rem;
+    margin-top: 4rem;
     align-self: center;
 
     input[type="file"] {

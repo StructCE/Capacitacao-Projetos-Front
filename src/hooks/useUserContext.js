@@ -34,6 +34,9 @@ const UserProvider = ({ children }) => {
             Cookies.setItem('laVoute/User', JSON.stringify(response.data))
             setUser(response.data)
             console.log(response.data)
+            api.defaults.headers.common['X-User-Token'] = response.data.authentication_token
+            api.defaults.headers.common['X-User-Email'] = response.data.email
+
             setLoaded(true)
         } catch(e) {
             console.error(e)
@@ -53,9 +56,11 @@ const UserProvider = ({ children }) => {
                 }
             })
             Cookies.setItem('laVoute/User', JSON.stringify(response.data))
-
+            api.defaults.headers.common['X-User-Token'] = response.data.authentication_token
+            api.defaults.headers.common['X-User-Email'] = response.data.email
             setUser(response.data)
             setError(false)
+            setLoaded(true)
             history.go(1)
         } catch(e) {
             setError(true)
@@ -113,7 +118,8 @@ const UserProvider = ({ children }) => {
                 setUser(null)
                 history.go(0)
         } catch(e) {
-            alert(e)
+            Cookies.removeItem('laVoute/User')
+            setUser(null)
         }
     }
 
