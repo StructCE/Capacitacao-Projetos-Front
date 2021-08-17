@@ -51,7 +51,7 @@ const LinkPaintingPage = () => {
                             key={gallery.id} 
                             image={
                                 gallery.image_url ?
-                                `http:127.0.0.1:3000${gallery.image_url}` : 
+                                `http://127.0.0.1:3000${gallery.image_url}` : 
                                 placeholder
                             }
                             onClick={() => handleChoice(gallery.id)}

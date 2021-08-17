@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import LeftImage from '../../assets/LeftImage.jpg'
-import RightImage from '../../assets/RightImage.jpg'
+import LeftImage from '../../assets/LeftGallery.jpg'
+import RightImage from '../../assets/GalleyRight.jpg'
 
 export const Container = styled.section`
     display: flex;
@@ -58,11 +58,6 @@ export const CenterSector = styled.div`
             margin-bottom: 2%;
         }
     }
-
-    .register {
-        margin: 2rem 0;
-        position: relative;
-    }
 `;
 
 export const InputSection = styled.form`
@@ -73,13 +68,6 @@ export const InputSection = styled.form`
     flex-direction: column;
     justify-content: center;
 `
-
-export const ErrorSection = styled.span`
-    color: #c00;
-    font-family: 'Merienda One';
-    text-align: center;
-`;
-
 
 export const RightSector = styled.div`
     display: flex;

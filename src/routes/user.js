@@ -5,6 +5,7 @@ import ProfilePage from "../pages/ProfilePage"
 import EditUserPage from '../pages/EditUserPage'
 import CreateGalleryPage from "../pages/CreateGalleryPage"
 import GalleryPage from "../pages/GalleryPage"
+import EditGalleryPage from "../pages/EditGalleryPage"
 
 const UserRoutes = () => {
 
@@ -20,6 +21,7 @@ const UserRoutes = () => {
                     <Route exact path={`${path}/edit`} component={EditUserPage} />
                     <Route exact path={`${path}/gallery/create`} component={CreateGalleryPage} />
                     <Route exact path={`${path}/gallery/:id`} component={GalleryPage} />
+                    <Route exact path={`${path}/gallery/:id/edit`} component={EditGalleryPage} />
                 </>
                 :
                     <Route path={path} component={LoginPage} />
