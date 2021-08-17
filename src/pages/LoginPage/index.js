@@ -75,6 +75,8 @@ const LoginPage = () => {
                         Entrar
                     </Button>
                 </InputSection>
+
+                <Button className="register">Se registre aqui</Button>
             </CenterSector>
             <RightSector>
                 <div className="gradient" />

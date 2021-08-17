@@ -74,10 +74,55 @@ export const ImageInput = styled.form`
     }
 `;
 
-export const Container = styled.section`
+export const GalleryContainer = styled.section`
+    display: flex;
+    flex-direction: column;
 
+    .gallery-wraper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    button {
+        width: 15rem;
+    }
 `;
 
-export const NoUser = styled.section`
+export const GalleryItem = styled.div`
+    height: 20rem;
+    width: 20rem;
+    margin: 2rem;
+    background: url(${props => props.image});
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all .5s;
 
+    div {
+        height: 100%;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+        transition: all .5s;
+
+        h3 {
+            text-align: center;
+            display: none;
+            transition: all .5s;
+        }
+    }
+    
+
+    &:hover {
+        transform: scale(110%);
+
+        div {
+            background: #415a77af
+        }
+
+        h3 {
+            display: block;
+        }
+    }
 `;

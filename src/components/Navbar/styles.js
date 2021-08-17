@@ -104,4 +104,10 @@ export const Logo = styled.h1`
 
 export const LogOut = styled.div`
   color: var(--red);
+  cursor: pointer;
+  transition: all .2s;
+
+  &:hover{
+    color: #415a77;
+  }
 `;
