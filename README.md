@@ -13,7 +13,7 @@ La Voûte des Couleurs é uma galeria digital com inúmeros artistas e pinturas 
 Para acessar o site completo será necessário fazer uso da api em Rails localizada em [Capacitacao-Projetos-Api
 ](https://github.com/StructCE/Capacitacao-Projetos-Api). 
 
-Membros responsáveis pelo pela criação do projeto:
+## Membros responsáveis pelo projeto:
 * [Arthur Mota Furtado](https://github.com/BomDia12)
 * [Guilherme Rodrigues](https://github.com/guilodron)
 * [Iago Carvalho](https://github.com/carvalhoiago)
