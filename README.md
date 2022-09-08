@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+<h1 align="center"> la Voûte des Couleurs </h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+    <img align="center" src="./public/projetos_thumb.png" width="400" >
+<p>
 
-## Available Scripts
+# Sobre o Projeto
 
-In the project directory, you can run:
+Projeto de capacitação em React e Ruby on Rails criado pela Diretoria Administrativa - Financeira da Struct e concluído em 17 de agosto de 2021. Essa capacitação ocorreu devido a transição no uso de Rails Full-Stack para o uso da biblioteca React (front-end) em conjunto com Ruby on Rails (back-end).
+
+La Voûte des Couleurs é uma galeria digital com inúmeros artistas e pinturas de altíssima qualidade. O site conta também com conteúdos educativos referentes às pinturas, aos estilos e aos seus artistas. Para a inclusão ou remoção de conteúdo visual das páginas, o site possui uma página de Login e Logout para acesso do administrador.
+
+Para acessar o site completo será necessário fazer uso da api em Rails localizada em [Capacitacao-Projetos-Api
+](https://github.com/StructCE/Capacitacao-Projetos-Api). 
+
+## Membros responsáveis pelo projeto:
+* [Arthur Mota Furtado](https://github.com/BomDia12)
+* [Guilherme Rodrigues](https://github.com/guilodron)
+* [Iago Carvalho](https://github.com/carvalhoiago)
+* [Kayran Vieira](https://github.com/DraculK)
+
+# Requisitos e ferramentas utilizadas
+* [Node](https://nodejs.org/en/download/) (v16.16.0)
+* [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+* [Git](https://git-scm.com/downloads)
+
+# Como clonar e rodar o projeto em sua máquina
+### `git clone https://github.com/StructCE/Capacitacao-Projetos-Front.git`
+Clona o repositório para uso local em seu computador.
+
+### `yarn` ou `yarn install`
+Instala todas as dependências e módulos do arquivo package.json necessários para o rodar o projeto react.
+
+Caso o erro `ERR_OSSL_EVP_UNSUPPORTED webpack` surja, a sua versão do node pode ser diferente da versão do projeto. Nesse caso digite no terminal `nvm use 16.16.0` e tente instalar as dependências novamente.
 
 ### `yarn start`
+Roda o projeto em modo de desenvolvedor.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Abra [http://localhost:2000](http://localhost:2000) para visualizar o projeto em seu navegador padrão.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+A página vai recarregar se você fizer qualquer edição e erros no código serão exibidos no terminal.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
